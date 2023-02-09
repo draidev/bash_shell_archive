@@ -7,4 +7,7 @@
 	-  어떤 docker container에서 어떤 jupyter process를 실행하고 있는지 확인하기 위한 스크립트
 	
 - ```gpu_process_check.sh (which_containers_jupyter.sh upgrade version)```
-	- nvidia-smi 명령어와 pid를 사용하여 어떤 jupyter process가 gpu를 점유하고 있는지 확인하는 부분을 추가
+	- nvidia-smi 명령어와 pid를 사용하여 어떤 jupyter process가 gpu를 점유하고 있는지 확인하는 부분을 추가  
+- ```compare_rpm.sh```   
+	- jenkins Build History에서 각 build번호의 full log에 있는 sha1sum의 해쉬값을 참고하여, 각 Build에서 변경된 rpm package를 보여주는 스크립트   
+	- 사용법 : ./compare_rpm.sh [빌드 번호] [빌드 번호]
