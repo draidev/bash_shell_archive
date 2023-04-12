@@ -121,3 +121,74 @@
 		
 		jk 
 		```
+
+<br>  
+
+## 문자열 비교
+
+---
+
+### 두 문자열이 같은지 확인
+
+- `**==**`
+    
+    ```bash
+    #!/bin/bash
+    
+    read -p "Enter first string: " VAR1
+    read -p "Enter second string: " VAR2
+    
+    if [[ "$VAR1" == "$VAR2" ]]; then
+        echo "Strings are equal."
+    else
+        echo "Strings are not equal."
+    fi
+    ```
+    
+
+### 문자열에 하위 문자열이 포함되어 있는지 확인
+
+- `***`**
+    
+    ```bash
+    echo -e "\033[31m<< display docker container jupyter process >>\033[0m"
+    while read container_name || [ -n "$container_name" ]; do
+        container_hash=$(docker exec $container_name ps aux | grep jupyter/runtime/kernel | rev | cut -d '/' -f1 | re
+        if [[ $container_hash == ***.json*** ]]; then
+            echo -e "\033[32m$container_name\033[0m"
+            echo -e "$container_hash\n"
+        fi  
+    done < docker_container_name_list.txt
+    echo -e "\n"
+    ```
+    
+
+### 문자열이 비어 있는지 확인
+
+- -z
+    - 공백 문자열이면 TRUE
+    
+    ```bash
+    #!/bin/bash
+    
+    VAR=''
+    if [[ -z $VAR ]]; then
+      echo "String is empty."
+    fi
+    
+    # String is empty.
+    ```
+    
+- -n
+    - 공백 문자열이 아니면 TRUE
+    
+    ```bash
+    #!/bin/bash
+    
+    VAR='Linuxize'
+    if [[ -n $VAR ]]; then
+      echo "String is not empty."
+    fi
+    
+    # String is not empty.
+    ```
