@@ -95,6 +95,7 @@ process_after_one_hour() {
     unknown_hour_size=0
     post_hour_size=0
     chatgpt_hour_size=0
+	hour_total_size=0
 }
 
 default_path=/lockard_ai/data/files/
