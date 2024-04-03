@@ -7,6 +7,8 @@ auto_commit()
 	baseDir=$1
 	cd ${baseDir}
 
+	git pull
+
 	filePath=`git status -u -s | head -n 1`
 	filePath=${filePath:3}
 
@@ -20,21 +22,21 @@ auto_commit()
 	tempfilepath="/home/drtkdldjstm/temp.txt"
 	if [ $2 -eq 0 ]; then
 		commitMsg=`cat $filePath | head -1`
-	elif [ $2 -eq 1]; then
-		commitMsgfile="/home/drtkdldjstm/Mal_commitMsg.txt"
 
+	elif [ $2 -eq 1 ]; then
+		commitMsgfile="/home/drtkdldjstm/Mal_commitMsg.txt"
 		commitMsg=`cat $commitMsgfile | head -n 1`
 		echo "#cm $commitMsg"
 		cat $commitMsgfile > $tempfilepath
 		tail -n +2 $tempfilepath > $commitMsgfile
-		rm $tempfilepath
+
 	elif [ $2 -eq 2 ]; then
 		commitMsgfile="/home/drtkdldjstm/Bash_commitMsg.txt"
-
 		commitMsg=`cat $commitMsgfile | head -n 1`
 		echo "#cm $commitMsg"
 		cat $commitMsgfile > $tempfilepath
 		tail -n +2 $tempfilepath > $commitMsgfile
+
 	else
 		echo "##### nothing to process!! #####"
 		exit
@@ -50,6 +52,7 @@ auto_commit()
 	git status
 	git commit -m "${commitMsg}"
 	git push
+	exit
 }
 
 
